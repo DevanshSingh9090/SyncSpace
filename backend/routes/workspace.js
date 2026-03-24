@@ -1,0 +1,21 @@
+import express from "express";
+import { validateRequest } from "zod-express-middleware";
+import { z } from "zod";
+import { workspaceSchema, inviteMemberSchema, tokenSchema } from "../libs/validate-schema.js";
+import { createWorkspace, getWorkspaces, getWorkspaceDetails, getWorkspaceProjects, getWorkspaceStats, inviteUserToWorkspace, acceptGenerateInvite, acceptInviteByToken, updateWorkspace, deleteWorkspace, transferOwnership } from "../controllers/workspace.js";
+import authMiddleware from "../middleware/auth-middleware.js";
+
+const router = express.Router();
+router.use(authMiddleware);
+router.post("/", validateRequest({ body: workspaceSchema }), createWorkspace);
+router.get("/", getWorkspaces);
+router.get("/:workspaceId", validateRequest({ params: z.object({ workspaceId: z.string() }) }), getWorkspaceDetails);
+router.put("/:workspaceId", validateRequest({ params: z.object({ workspaceId: z.string() }) }), updateWorkspace);
+router.delete("/:workspaceId", validateRequest({ params: z.object({ workspaceId: z.string() }) }), deleteWorkspace);
+router.post("/:workspaceId/transfer-ownership", validateRequest({ params: z.object({ workspaceId: z.string() }), body: z.object({ newOwnerId: z.string() }) }), transferOwnership);
+router.get("/:workspaceId/projects", validateRequest({ params: z.object({ workspaceId: z.string() }) }), getWorkspaceProjects);
+router.get("/:workspaceId/stats", validateRequest({ params: z.object({ workspaceId: z.string() }) }), getWorkspaceStats);
+router.post("/:workspaceId/invite", validateRequest({ params: z.object({ workspaceId: z.string() }), body: inviteMemberSchema }), inviteUserToWorkspace);
+router.post("/:workspaceId/accept-invite", validateRequest({ params: z.object({ workspaceId: z.string() }) }), acceptGenerateInvite);
+router.post("/accept-invite-by-token", validateRequest({ body: tokenSchema }), acceptInviteByToken);
+export default router;
