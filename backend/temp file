@@ -1,0 +1,23 @@
+PORT=5000
+MONGO_URI=mongodb+srv://devanshsingh9090_db_user:projectManager@cluster0.nllleki.mongodb.net/ProjectManagerDB?appName=Cluster0
+JWT_SECRET=mncbvcftdhwiknxqdilkjshgaffrervwbdnxnjcjwo
+FRONTEND_URL=http://localhost:5173
+
+# ─── Email (Gmail + Nodemailer) ────────────────────────────────────────────────
+# Step 1: Enable 2-Step Verification → https://myaccount.google.com/security
+# Step 2: Generate App Password     → https://myaccount.google.com/apppasswords
+#         App name: TaskHub
+#         Copy the 16-char password and remove spaces before pasting below
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=devanshsingh9090@gmail.com
+SMTP_PASS=zclpjylihwfavkbl
+FROM_EMAIL=devanshsingh9090@gmail.com
+
+# ─── Cloudinary (Avatar Uploads) ──────────────────────────────────────────────
+# Sign up at https://cloudinary.com and grab these from your Dashboard → API Keys
+CLOUDINARY_CLOUD_NAME=deebrqng2
+CLOUDINARY_API_KEY=927485987518665
+CLOUDINARY_API_SECRET=4zqWrKCm93Fk9E0Y5j1WeRK7u4g
