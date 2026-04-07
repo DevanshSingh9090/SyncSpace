@@ -14,7 +14,7 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=devanshsingh9090@gmail.com
 SMTP_PASS=zclpjylihwfavkbl
-FROM_EMAIL=devanshsingh9090@gmail.com
+FROM_EMAIL=SyncSpace
 
 # ─── Cloudinary (Avatar Uploads) ──────────────────────────────────────────────
 # Sign up at https://cloudinary.com and grab these from your Dashboard → API Keys
